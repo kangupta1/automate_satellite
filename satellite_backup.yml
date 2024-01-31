@@ -1,0 +1,27 @@
+---
+- name: Set up Automatic Satellite Backups and run first backup
+  hosts: satellite
+  become: true
+  pre_tasks:
+    - name: Ensure backup directory exists
+      ansible.builtin.file:
+        path: "{{ satellite_backup_destination }}"
+        state: directory
+        mode: '0755'
+
+    - name: Ensure foreman backup directory exists
+      ansible.builtin.file:
+        path: "{{ satellite_backup_destination }}"
+        state: directory
+        mode: '0755'
+        owner: postgres
+        group: postgres
+
+  roles:
+    - role: redhat.satellite_operations.backup
+
+  tasks:
+    - name: Initiate first backup
+      ansible.builtin.command:
+        cmd: foreman-maintain backup offline --assumeyes {{ satellite_backup_destination }}
+      changed_when: true
