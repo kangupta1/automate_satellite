@@ -1,0 +1,17 @@
+---
+- name: Create Activation Keys
+  hosts: satellite
+  gather_facts: false
+  vars_files: satellite_connection_credentials.yml
+  tasks:
+    - name: "Create client activation key"
+      redhat.satellite.activation_key:
+        username: "{{ satellite_username }}"
+        password: "{{ satellite_password }}"
+        server_url: "{{ satellite_url }}"
+        name: "{{ activation_key_name }}"
+        organization: "{{ organization_name }}"
+        
+
+
+    
