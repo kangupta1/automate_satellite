@@ -10,4 +10,4 @@
         password: "{{ satellite_password }}"
         server_url: "{{ satellite_server_url }}"
         name: "{{ satellite_new_organization }}"
-        state: present
+        #state: present
