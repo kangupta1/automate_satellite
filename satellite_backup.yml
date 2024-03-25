@@ -7,13 +7,13 @@
       ansible.builtin.file:
         path: "{{ satellite_backup_destination }}"
         state: directory
-        mode: '0755'
+        mode: "0755"
 
     - name: Ensure foreman backup directory exists
       ansible.builtin.file:
         path: "{{ satellite_backup_destination }}"
         state: directory
-        mode: '0755'
+        mode: "0755"
         owner: postgres
         group: postgres
 
