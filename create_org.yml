@@ -4,7 +4,7 @@
   gather_facts: false
   vars_files: satellite_connection_credentials.yml
   tasks:
-    - name: "Create CI Organization"
+    - name: Create CI Organization
       redhat.satellite.organization:
         username: "{{ satellite_username }}"
         password: "{{ satellite_password }}"
