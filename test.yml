@@ -1,2 +1,9 @@
 ---
 - name: this is test file
+  hosts: all
+  tasks:
+      - name: Copy file from source to destination
+        copy:
+          src: file1
+          dest: dir/file2
+          mode: 644
